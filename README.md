@@ -22,4 +22,4 @@ TypeScript
 
 ✒️ Autores :
 José Guilherme - https://github.com/guilhermeoln - (Front End)
-Nalbert Cezar - - (Back End)
+Nalbert Cezar - https://github.com/nalbertcezar - (Back End)
