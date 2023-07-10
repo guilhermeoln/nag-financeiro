@@ -40,13 +40,21 @@ export default function Login() {
             <FormLabel color={black900} fontSize="13px" fontWeight="700">
               Usuário
             </FormLabel>
-            <Input type="text" height="55px" />
+            <Input
+              type="text"
+              height="55px"
+              placeholder="Digite o nome de usuário..."
+            />
           </FormControl>
           <FormControl width="370px" marginTop="35px">
             <FormLabel color={black900} fontSize="13px" fontWeight="700">
               Senha
             </FormLabel>
-            <Input type="password" height="55px" />
+            <Input
+              type="password"
+              height="55px"
+              placeholder="Digite a sua senha..."
+            />
           </FormControl>
           <Button
             width="370px"
