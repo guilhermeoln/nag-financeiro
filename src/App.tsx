@@ -1,5 +1,7 @@
+import RoutesApp from "./routes";
+
 function App() {
-  return <div className="App">oi</div>;
+  return <RoutesApp />;
 }
 
 export default App;
