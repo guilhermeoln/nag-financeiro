@@ -21,5 +21,5 @@ ReactJS
 TypeScript
 
 ✒️ Autores :
-José Guilherme - https://github.com/guilhermeoln - Front End
-Nalbert Cezar - - Back End
+José Guilherme - https://github.com/guilhermeoln - (Front End)
+Nalbert Cezar - - (Back End)
