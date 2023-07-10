@@ -2,13 +2,13 @@ NAG - Gerenciamento Financeiro
 
 🚀 Começando Para inicializar o projeto na sua máquina, primeiramente você terá que clonar o repositório: 1- crie uma pasta na sua máquina. 2- abra o terminal e acessa essa pasta criada. 3- digite o seguinte comando no terminal:
 
-git clone
+git clone https://github.com/guilhermeoln/nag-financeiro.git
 OBS: Você precisa ter o git instalado na sua máquina
 
 Implantação: 📋 Pré-requisitos
 
-GIT
-Node
+GIT /
+Node / 
 IDE para acessar o código
 
 🔧 Instalação
