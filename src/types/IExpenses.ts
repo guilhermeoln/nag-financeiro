@@ -4,6 +4,8 @@ interface IExpenses {
   status: string;
   date: string;
   value: number;
+  type: string;
+  bank: string;
 }
 
 export default IExpenses;
