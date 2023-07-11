@@ -1,4 +1,4 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Text, useMediaQuery, Image } from "@chakra-ui/react";
 import navigationBar from "../../mock/navigationBar";
 import { useNavigate } from "react-router-dom";
 import { blue100, blue900 } from "../../styles/variaveis";
@@ -6,9 +6,11 @@ import { blue100, blue900 } from "../../styles/variaveis";
 export default function NavigationBar() {
   const navigate = useNavigate();
 
+  const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
+
   return (
     <Flex
-      width="240px"
+      width={isLargerThan800 ? "240px" : "150px"}
       height="100vh"
       position="fixed"
       flexDirection="column"
@@ -16,6 +18,9 @@ export default function NavigationBar() {
       py="50px"
       borderRight="1px solid #E5E9EB"
     >
+      <Text marginBottom="40px" fontWeight="700" fontSize="36px">
+        NAG
+      </Text>
       {navigationBar.map((navItem) => (
         <>
           <Flex
@@ -32,6 +37,14 @@ export default function NavigationBar() {
             borderRadius="6px"
             cursor="pointer"
           >
+            <Image
+              src={
+                window.location.pathname === navItem.path
+                  ? navItem.iconActive
+                  : navItem.iconInactive
+              }
+              alt="icon"
+            />
             <Text
               color={
                 window.location.pathname === navItem.path ? blue900 : "none"
@@ -39,6 +52,7 @@ export default function NavigationBar() {
               fontWeight={
                 window.location.pathname === navItem.path ? "700" : "400"
               }
+              marginLeft="5px"
             >
               {navItem.name}
             </Text>
