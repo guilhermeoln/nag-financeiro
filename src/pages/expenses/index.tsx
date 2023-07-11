@@ -2,19 +2,24 @@ import { useSelector } from "react-redux";
 import { Flex, useMediaQuery, Text, Grid } from "@chakra-ui/react";
 import { black900 } from "../../styles/variaveis";
 import CardValues from "./components/CardValues";
-import IEntries from "../../types/IEntries";
+import IExpenses from "../../types/IExpenses";
 import TableExpenses from "./components/TableExpenses";
 import { useEffect, useState } from "react";
 
 type State = {
-  entries: IEntries[];
+  entries: IExpenses[];
+  exits: IExpenses[];
 };
 
 export default function Expenses() {
   const [totalEntries, setTotalEntries] = useState(0);
+  const [totalExits, setTotalExits] = useState(0);
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
 
-  const entries = useSelector((state: State) => state.entries);
+  const { entries, exits } = useSelector((state: State) => ({
+    entries: state.entries,
+    exits: state.exits,
+  }));
 
   function calculateTotalEntries() {
     let valueEntries = 0;
@@ -26,9 +31,20 @@ export default function Expenses() {
     setTotalEntries(valueEntries);
   }
 
+  function calculateTotalExits() {
+    let valueExits = 0;
+
+    exits.forEach((exit) => {
+      valueExits += exit.value;
+    });
+
+    setTotalExits(valueExits);
+  }
+
   useEffect(() => {
     calculateTotalEntries();
-  }, [entries]);
+    calculateTotalExits();
+  }, [entries, exits]);
 
   return (
     <Flex
@@ -52,7 +68,7 @@ export default function Expenses() {
         gridRowGap={isLargerThan800 ? "0px" : "20px"}
       >
         <CardValues text="Saldo Entradas" value={totalEntries} />
-        <CardValues text="Saldo Saidas" value={2500} />
+        <CardValues text="Saldo Saidas" value={totalExits} />
       </Grid>
       <Flex
         width={isLargerThan800 ? "80%" : "100%"}
@@ -74,7 +90,7 @@ export default function Expenses() {
           <Text color={black900} fontWeight="700" marginBottom="10px">
             Saídas
           </Text>
-          <TableExpenses expenses={entries} />
+          <TableExpenses expenses={exits} />
         </Flex>
       </Flex>
     </Flex>

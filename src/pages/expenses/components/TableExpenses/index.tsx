@@ -10,7 +10,7 @@ import {
   TableContainer,
   Text,
 } from "@chakra-ui/react";
-import IEntries from "../../../../types/IEntries";
+import IExpenses from "../../../../types/IExpenses";
 import {
   green100,
   green700,
@@ -19,7 +19,7 @@ import {
 } from "../../../../styles/variaveis";
 
 type Props = {
-  expenses: IEntries[];
+  expenses: IExpenses[];
 };
 
 export default function TableExpenses({ expenses }: Props) {
