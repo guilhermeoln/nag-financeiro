@@ -36,7 +36,7 @@ export default function Entries() {
           Criar entrada
         </Button>
       </Flex>
-      <Flex width="90%" marginTop="30px">
+      <Flex width={isLargerThan800 ? "90%" : "100%"} marginTop="30px">
         <TabsEntries />
       </Flex>
     </Flex>

@@ -71,7 +71,7 @@ export default function Expenses() {
         <CardValues text="Saldo Saidas" value={totalExits} />
       </Grid>
       <Flex
-        width={isLargerThan800 ? "80%" : "100%"}
+        width={isLargerThan800 ? "90%" : "100%"}
         marginTop="30px"
         flexDirection={isLargerThan800 ? "row" : "column"}
       >
