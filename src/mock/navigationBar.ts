@@ -25,16 +25,6 @@ const navigationBar: INavigationBar[] = [
         path: "/despesas/entradas",
       },
       { id: 2, name: "Saídas", path: "/despesas/saidas" },
-      {
-        id: 3,
-        name: "Criar entrada",
-        path: "/despesas/criar-entrada",
-      },
-      {
-        id: 4,
-        name: "Criar saída",
-        path: "/despesas/criar-saida",
-      },
     ],
   },
 ];
