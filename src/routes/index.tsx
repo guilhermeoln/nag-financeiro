@@ -7,9 +7,11 @@ import NavigationBar from "../components/NavigationBar";
 export default function RoutesApp() {
   return (
     <BrowserRouter>
-      <NavigationBar />
       <Routes>
         <Route path="/" element={<Login />} />
+      </Routes>
+      <NavigationBar />
+      <Routes>
         <Route path="/inicio" element={<Home />} />
       </Routes>
     </BrowserRouter>
