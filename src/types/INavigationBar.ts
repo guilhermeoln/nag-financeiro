@@ -1,12 +1,12 @@
 interface INavigationBar {
   id: number;
   name: string;
-  icon: string;
   path: string;
+  iconActive: string;
+  iconInactive: string;
   subItems?: {
     id: number;
     name: string;
-    icon: string;
     path: string;
   }[];
 }
