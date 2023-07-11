@@ -20,7 +20,7 @@ export default function TabsEntries() {
 
   return (
     <Tabs width="100%" colorScheme="black">
-      <TabList>
+      <TabList overflowX="auto" overflowY="hidden">
         <Tab>Todos</Tab>
         <Tab>Confirmados</Tab>
         <Tab>Pendentes</Tab>
