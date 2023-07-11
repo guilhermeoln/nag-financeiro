@@ -1,4 +1,4 @@
-interface IEntries {
+interface IExpenses {
   id: number;
   issuer: string;
   status: string;
@@ -6,4 +6,4 @@ interface IEntries {
   value: number;
 }
 
-export default IEntries;
+export default IExpenses;
