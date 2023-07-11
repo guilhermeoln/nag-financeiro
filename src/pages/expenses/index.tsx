@@ -54,14 +54,23 @@ export default function Expenses() {
         <CardValues text="Saldo Entradas" value={totalEntries} />
         <CardValues text="Saldo Saidas" value={2500} />
       </Grid>
-      <Flex width="80%" marginTop="30px">
-        <Flex width="50%" flexDirection="column">
+      <Flex
+        width={isLargerThan800 ? "80%" : "100%"}
+        marginTop="30px"
+        flexDirection={isLargerThan800 ? "row" : "column"}
+      >
+        <Flex width={isLargerThan800 ? "50%" : "100%"} flexDirection="column">
           <Text color={black900} fontWeight="700" marginBottom="10px">
             Entradas
           </Text>
           <TableExpenses expenses={entries} />
         </Flex>
-        <Flex width="50%" flexDirection="column" marginLeft="30px">
+        <Flex
+          width={isLargerThan800 ? "50%" : "100%"}
+          flexDirection="column"
+          marginLeft={isLargerThan800 ? "30px" : "0px"}
+          marginTop={isLargerThan800 ? "0px" : "30px"}
+        >
           <Text color={black900} fontWeight="700" marginBottom="10px">
             Saídas
           </Text>
