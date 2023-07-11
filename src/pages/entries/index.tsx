@@ -13,7 +13,11 @@ export default function Entries() {
       }
       flexDirection="column"
     >
-      <Flex width="90%" justifyContent="space-between">
+      <Flex
+        width="90%"
+        justifyContent="space-between"
+        flexDirection={isLargerThan800 ? "row" : "column"}
+      >
         <Text
           color={black900}
           fontSize={isLargerThan800 ? "36px" : "22px"}
@@ -24,6 +28,8 @@ export default function Entries() {
         <Button
           backgroundColor="#4094F7"
           color="white"
+          width={isLargerThan800 ? "" : "150px"}
+          marginTop={isLargerThan800 ? "0px" : "20px"}
           leftIcon={<AddIcon />}
           fontSize="14px"
         >
