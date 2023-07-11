@@ -10,9 +10,12 @@ import {
 import { useMediaQuery } from "@chakra-ui/react";
 import { black900, blue100, blue900 } from "../../styles/variaveis";
 import logoLogin from "../../assets/logoLogin.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
+
+  const navigate = useNavigate();
 
   return (
     <Flex width="100%" minH="100vh">
@@ -40,13 +43,21 @@ export default function Login() {
             <FormLabel color={black900} fontSize="13px" fontWeight="700">
               Usuário
             </FormLabel>
-            <Input type="text" height="55px" />
+            <Input
+              type="text"
+              height="55px"
+              placeholder="Digite o nome de usuário..."
+            />
           </FormControl>
           <FormControl width="370px" marginTop="35px">
             <FormLabel color={black900} fontSize="13px" fontWeight="700">
               Senha
             </FormLabel>
-            <Input type="password" height="55px" />
+            <Input
+              type="password"
+              height="55px"
+              placeholder="Digite a sua senha..."
+            />
           </FormControl>
           <Button
             width="370px"
@@ -54,6 +65,7 @@ export default function Login() {
             marginTop="50px"
             backgroundColor={blue900}
             color="white"
+            onClick={() => navigate("/inicio")}
           >
             Entrar
           </Button>
