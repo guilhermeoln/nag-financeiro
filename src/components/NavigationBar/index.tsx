@@ -78,20 +78,7 @@ export default function NavigationBar() {
                     borderRadius="6px"
                     cursor="pointer"
                   >
-                    <Text
-                      color={
-                        window.location.pathname === navSubItens.path
-                          ? blue900
-                          : "none"
-                      }
-                      fontWeight={
-                        window.location.pathname === navSubItens.path
-                          ? "700"
-                          : "400"
-                      }
-                    >
-                      {navSubItens.name}
-                    </Text>
+                    <Text>{navSubItens.name}</Text>
                   </Flex>
                 ))}
               </Flex>
