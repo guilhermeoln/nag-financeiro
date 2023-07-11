@@ -19,8 +19,8 @@ export default function TabsEntries() {
   );
 
   return (
-    <Tabs width="100%" colorScheme="black">
-      <TabList overflowX="auto" overflowY="hidden">
+    <Tabs width="100%">
+      <TabList overflowX="auto">
         <Tab>Todos</Tab>
         <Tab>Confirmados</Tab>
         <Tab>Pendentes</Tab>
