@@ -26,6 +26,7 @@ export default function NavigationBar() {
       alignItems="center"
       py="50px"
       borderRight="1px solid #E5E9EB"
+      boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
     >
       <Box
         border={`3px solid ${blue100}`}
