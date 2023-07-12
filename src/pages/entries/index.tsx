@@ -1,10 +1,19 @@
-import { Flex, useMediaQuery, Text, Button } from "@chakra-ui/react";
+import {
+  Flex,
+  useMediaQuery,
+  Text,
+  Button,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { black900, blue100, blue900 } from "../../styles/variaveis";
 import { AddIcon } from "@chakra-ui/icons";
 import TabsEntries from "./components/TabsEntries";
+import ModalEntries from "./components/ModalEntries";
 
 export default function Entries() {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Flex
@@ -32,6 +41,7 @@ export default function Entries() {
           marginTop={isLargerThan800 ? "0px" : "20px"}
           leftIcon={<AddIcon />}
           fontSize="14px"
+          onClick={() => onOpen()}
         >
           Criar entrada
         </Button>
@@ -39,6 +49,7 @@ export default function Entries() {
       <Flex width={isLargerThan800 ? "90%" : "100%"} marginTop="30px">
         <TabsEntries />
       </Flex>
+      <ModalEntries isOpen={isOpen} onClose={onClose} />
     </Flex>
   );
 }
