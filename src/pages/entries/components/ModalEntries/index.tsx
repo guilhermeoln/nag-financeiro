@@ -63,6 +63,14 @@ export default function ModalEntries({ isOpen, onClose }: Props) {
                   <Input type="text" placeholder="Banco" height="48px" />
                 </FormControl>
               </Flex>
+              <Flex width="50%" marginLeft="20px">
+                <FormControl>
+                  <FormLabel>Status</FormLabel>
+                  <Select height="48px" isDisabled>
+                    <option value="Pendente">Pendente</option>
+                  </Select>
+                </FormControl>
+              </Flex>
             </Flex>
           </Flex>
         </ModalBody>
