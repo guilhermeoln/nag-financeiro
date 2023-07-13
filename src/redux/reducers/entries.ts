@@ -34,7 +34,12 @@ const initialState: IEntries[] = [
 const entriesSlice = createSlice({
   name: "entries",
   initialState,
-  reducers: {},
+  reducers: {
+    addEntries: (state, { payload }) => {
+      return [...state, { ...payload, value: Number(payload.value) }];
+    },
+  },
 });
 
+export const { addEntries } = entriesSlice.actions;
 export default entriesSlice.reducer;
