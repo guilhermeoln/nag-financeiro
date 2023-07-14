@@ -37,10 +37,7 @@ const schemaValidation = yup
     value: yup.string().required("O valor é obrigatório!"),
     bank: yup.string().required("O banco é obrigatório!"),
     status: yup.string().required(),
-    date: yup
-      .date()
-      .max(new Date(), "Insira uma data válida!")
-      .required("A data é obrigatória!"),
+    date: yup.date().required("A data é obrigatória!"),
   })
   .required();
 

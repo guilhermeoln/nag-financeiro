@@ -6,6 +6,7 @@ import NavigationBar from "../components/NavigationBar";
 import Expenses from "../pages/expenses";
 import Entries from "../pages/entries";
 import Exits from "../pages/exits";
+import PrivateRoutes from "./PrivateRoutes";
 
 export default function RoutesApp() {
   return (
@@ -15,10 +16,38 @@ export default function RoutesApp() {
       </Routes>
       <NavigationBar />
       <Routes>
-        <Route path="/inicio" element={<Home />} />
-        <Route path="/despesas" element={<Expenses />} />
-        <Route path="/despesas/entradas" element={<Entries />} />
-        <Route path="/despesas/saidas" element={<Exits />} />
+        <Route
+          path="/inicio"
+          element={
+            <PrivateRoutes>
+              <Home />
+            </PrivateRoutes>
+          }
+        />
+        <Route
+          path="/despesas"
+          element={
+            <PrivateRoutes>
+              <Expenses />
+            </PrivateRoutes>
+          }
+        />
+        <Route
+          path="/despesas/entradas"
+          element={
+            <PrivateRoutes>
+              <Entries />
+            </PrivateRoutes>
+          }
+        />
+        <Route
+          path="/despesas/saidas"
+          element={
+            <PrivateRoutes>
+              <Exits />
+            </PrivateRoutes>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
