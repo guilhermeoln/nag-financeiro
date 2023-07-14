@@ -5,6 +5,7 @@ import { Flex } from "@chakra-ui/react";
 import NavigationBar from "../components/NavigationBar";
 import Expenses from "../pages/expenses";
 import Entries from "../pages/entries";
+import Exits from "../pages/exits";
 
 export default function RoutesApp() {
   return (
@@ -17,6 +18,7 @@ export default function RoutesApp() {
         <Route path="/inicio" element={<Home />} />
         <Route path="/despesas" element={<Expenses />} />
         <Route path="/despesas/entradas" element={<Entries />} />
+        <Route path="/despesas/saidas" element={<Exits />} />
       </Routes>
     </BrowserRouter>
   );
