@@ -23,6 +23,7 @@ import * as yup from "yup";
 import { addEntries } from "../../../../redux/reducers/entries";
 import { useDispatch } from "react-redux";
 import maskData from "../../../../utils/maskData";
+import typesPayment from "../../../../mock/typesPayment";
 
 type Props = {
   isOpen: boolean;
@@ -36,7 +37,10 @@ const schemaValidation = yup
     value: yup.string().required("O valor é obrigatório!"),
     bank: yup.string().required("O banco é obrigatório!"),
     status: yup.string().required(),
-    date: yup.string().required("A data é obrigatória!"),
+    date: yup
+      .date()
+      .max(new Date(), "Insira uma data válida!")
+      .required("A data é obrigatória!"),
   })
   .required();
 
@@ -96,7 +100,11 @@ export default function ModalEntries({ isOpen, onClose }: Props) {
                     <FormLabel>Tipo</FormLabel>
                     <Select height="48px" {...register("type")}>
                       <option value="">Tipo</option>
-                      <option value="Pix">Pix</option>
+                      {typesPayment.map((type) => (
+                        <option key={type.id} value={type.name}>
+                          {type.name}
+                        </option>
+                      ))}
                     </Select>
                     <FormErrorMessage>{errors?.type?.message}</FormErrorMessage>
                   </FormControl>
@@ -111,7 +119,6 @@ export default function ModalEntries({ isOpen, onClose }: Props) {
                       placeholder="Valor"
                       height="48px"
                       {...register("value")}
-                      value={getValues("value")}
                     />
                     <FormErrorMessage>
                       {errors?.value?.message}
@@ -122,15 +129,10 @@ export default function ModalEntries({ isOpen, onClose }: Props) {
                   <FormControl isInvalid={!!errors.date}>
                     <FormLabel>Data</FormLabel>
                     <Input
-                      type="text"
+                      type="date"
                       height="48px"
                       {...register("date")}
-                      value={getValues("date")}
-                      onChange={(event) => {
-                        maskData(event);
-                      }}
                       placeholder="EX: XX/XX/XXXX"
-                      maxLength={10}
                     />
                     <FormErrorMessage>{errors?.date?.message}</FormErrorMessage>
                   </FormControl>
