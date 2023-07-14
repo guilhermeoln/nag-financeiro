@@ -2,6 +2,7 @@ import {
   Button,
   Flex,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Image,
   Input,
@@ -12,10 +13,42 @@ import { black900, blue100, blue900 } from "../../styles/variaveis";
 import logoLogin from "../../assets/logoLogin.png";
 import { useNavigate } from "react-router-dom";
 
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../redux/reducers/user";
+
+const schemaValidation = yup
+  .object({
+    user: yup.string().required("O usuário é obrigatório!"),
+  })
+  .required();
+
 export default function Login() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    getValues,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schemaValidation),
+  });
+
+  type FormData = {
+    user: string;
+  };
+
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  function handleLoginUser(data: FormData) {
+    dispatch(loginUser(data.user));
+    navigate("/inicio");
+  }
 
   return (
     <Flex width="100%" minH="100vh">
@@ -38,8 +71,8 @@ export default function Login() {
           Sistema Operacional de Processos de Energia e Construção Operado e
           mantido por NAG
         </Text>
-        <form>
-          <FormControl width="370px" marginTop="35px">
+        <form onSubmit={handleSubmit(handleLoginUser)}>
+          <FormControl width="370px" marginTop="35px" isInvalid={!!errors.user}>
             <FormLabel color={black900} fontSize="13px" fontWeight="700">
               Usuário
             </FormLabel>
@@ -47,7 +80,9 @@ export default function Login() {
               type="text"
               height="55px"
               placeholder="Digite o nome de usuário..."
+              {...register("user")}
             />
+            <FormErrorMessage>{errors.user?.message}</FormErrorMessage>
           </FormControl>
           <FormControl width="370px" marginTop="35px">
             <FormLabel color={black900} fontSize="13px" fontWeight="700">
@@ -65,7 +100,7 @@ export default function Login() {
             marginTop="50px"
             backgroundColor={blue900}
             color="white"
-            onClick={() => navigate("/inicio")}
+            type="submit"
           >
             Entrar
           </Button>
