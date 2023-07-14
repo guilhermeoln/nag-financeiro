@@ -24,6 +24,7 @@ import { addEntries } from "../../../../redux/reducers/entries";
 import { useDispatch } from "react-redux";
 import maskData from "../../../../utils/maskData";
 import typesPayment from "../../../../mock/typesPayment";
+import banks from "../../../../mock/banks";
 
 type Props = {
   isOpen: boolean;
@@ -96,7 +97,7 @@ export default function ModalEntries({ isOpen, onClose }: Props) {
                   <FormControl isInvalid={!!errors.type}>
                     <FormLabel>Tipo</FormLabel>
                     <Select height="48px" {...register("type")}>
-                      <option value="">Tipo</option>
+                      <option value="">Selecione um tipo</option>
                       {typesPayment.map((type) => (
                         <option key={type.id} value={type.name}>
                           {type.name}
@@ -139,12 +140,12 @@ export default function ModalEntries({ isOpen, onClose }: Props) {
                 <Flex width="50%">
                   <FormControl isInvalid={!!errors.bank}>
                     <FormLabel>Banco</FormLabel>
-                    <Input
-                      type="text"
-                      placeholder="Banco"
-                      height="48px"
-                      {...register("bank")}
-                    />
+                    <Select height="48px" {...register("bank")}>
+                      <option value="">Selecione um banco</option>
+                      {banks.map((bank) => (
+                        <option key={bank.id}>{bank.name}</option>
+                      ))}
+                    </Select>
                     <FormErrorMessage>{errors?.bank?.message}</FormErrorMessage>
                   </FormControl>
                 </Flex>
