@@ -11,9 +11,18 @@ import { useNavigate } from "react-router-dom";
 import { blue100, blue900 } from "../../styles/variaveis";
 
 import { BiLogOutCircle } from "react-icons/bi";
+import { useSelector } from "react-redux";
+
+type State = {
+  user: string;
+};
 
 export default function NavigationBar() {
   const navigate = useNavigate();
+
+  const user = useSelector((state: State) => state.user);
+
+  console.log("USER", user);
 
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
 
@@ -40,11 +49,11 @@ export default function NavigationBar() {
         marginBottom="10px"
       >
         <Text fontWeight="700" fontSize="36px">
-          JG
+          {user.slice(0, 1).toUpperCase()}
         </Text>
       </Box>
       <Text fontSize="18px" fontWeight="700" marginBottom="10px">
-        Usuário
+        {user}
       </Text>
       <Button
         width="50px"
