@@ -36,7 +36,20 @@ const entriesSlice = createSlice({
   initialState,
   reducers: {
     addEntries: (state, { payload }) => {
-      return [...state, { ...payload, value: Number(payload.value) }];
+      const day = payload.date.getDate();
+      const month = payload.date.getMonth() + 1;
+      const year = payload.date.getFullYear();
+
+      return [
+        ...state,
+        {
+          ...payload,
+          value: Number(payload.value),
+          date: `${day.toString().length > 1 ? day : `0${day}`}/${
+            month.toString().length > 1 ? month : `0${month}`
+          }/${year}`,
+        },
+      ];
     },
   },
 });

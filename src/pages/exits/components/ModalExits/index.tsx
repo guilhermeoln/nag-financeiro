@@ -20,9 +20,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import { addEntries } from "../../../../redux/reducers/entries";
 import { useDispatch } from "react-redux";
 import maskData from "../../../../utils/maskData";
+import { addExit } from "../../../../redux/reducers/exits";
 import typesPayment from "../../../../mock/typesPayment";
 
 type Props = {
@@ -39,17 +39,18 @@ const schemaValidation = yup
     status: yup.string().required(),
     date: yup
       .date()
-      .max(new Date(), "Insira uma data válida!")
+      .max(new Date(), "Data inválida!")
       .required("A data é obrigatória!"),
   })
   .required();
 
-export default function ModalEntries({ isOpen, onClose }: Props) {
+export default function ModalExits({ isOpen, onClose }: Props) {
   const {
     register,
     handleSubmit,
     reset,
     getValues,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schemaValidation),
@@ -66,12 +67,12 @@ export default function ModalEntries({ isOpen, onClose }: Props) {
         <ModalBody padding="20px">
           <form
             onSubmit={handleSubmit((data) => {
-              dispatch(addEntries(data));
+              dispatch(addExit(data));
               reset();
               onClose();
               toast({
-                title: "Entrada criada!",
-                description: "A entrada foi criada com sucesso!",
+                title: "Saída criada!",
+                description: "A Saída foi criada com sucesso!",
                 status: "success",
                 position: "top-right",
                 duration: 5000,
@@ -134,7 +135,11 @@ export default function ModalEntries({ isOpen, onClose }: Props) {
                       {...register("date")}
                       placeholder="EX: XX/XX/XXXX"
                     />
-                    <FormErrorMessage>{errors?.date?.message}</FormErrorMessage>
+                    <FormErrorMessage>
+                      {errors?.date?.message === "A data é obrigatória!"
+                        ? errors?.date?.message
+                        : "Data inválida"}
+                    </FormErrorMessage>
                   </FormControl>
                 </Flex>
               </Flex>
@@ -169,7 +174,7 @@ export default function ModalEntries({ isOpen, onClose }: Props) {
                 color="white"
                 type="submit"
               >
-                Criar entrada
+                Criar saída
               </Button>
             </Flex>
           </form>
