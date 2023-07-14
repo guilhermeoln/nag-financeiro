@@ -11,7 +11,8 @@ import { useNavigate } from "react-router-dom";
 import { blue100, blue900 } from "../../styles/variaveis";
 
 import { BiLogOutCircle } from "react-icons/bi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../../redux/reducers/user";
 
 type State = {
   user: string;
@@ -22,7 +23,7 @@ export default function NavigationBar() {
 
   const user = useSelector((state: State) => state.user);
 
-  console.log("USER", user);
+  const dispatch = useDispatch();
 
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
 
@@ -49,11 +50,11 @@ export default function NavigationBar() {
         marginBottom="10px"
       >
         <Text fontWeight="700" fontSize="36px">
-          {user.slice(0, 1).toUpperCase()}
+          {user && user.slice(0, 1).toUpperCase()}
         </Text>
       </Box>
       <Text fontSize="18px" fontWeight="700" marginBottom="10px">
-        {user}
+        {user && user}
       </Text>
       <Button
         width="50px"
@@ -62,7 +63,10 @@ export default function NavigationBar() {
         marginBottom="30px"
         backgroundColor="white"
         border="1px solid #ccc"
-        onClick={() => navigate("/")}
+        onClick={() => {
+          dispatch(logoutUser());
+          navigate("/");
+        }}
       >
         <BiLogOutCircle />
       </Button>
